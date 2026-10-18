@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập | OncoSense AI</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            font-family: Arial, sans-serif;
+            color: #f1f5f9;
+            background:
+                radial-gradient(circle at top left, #164e63, transparent 45%),
+                linear-gradient(135deg, #07111f, #10253b);
+        }
+
+        .login-card {
+            width: 100%;
+            max-width: 440px;
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid #ffffff20;
+            border-radius: 24px;
+            background: #ffffff0c;
+            box-shadow: 0 24px 80px #0005;
+        }
+
+        .logo {
+            width: 66px;
+            height: 66px;
+            margin: 0 auto 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            background: #0d9488;
+            font-size: 32px;
+        }
+
+        h1 {
+            margin-bottom: 12px;
+            font-size: 30px;
+        }
+
+        .description {
+            color: #bdcbdc;
+            line-height: 1.7;
+        }
+
+        .google-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            margin-top: 28px;
+            padding: 15px;
+            border-radius: 12px;
+            background: white;
+            color: #202124;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .google-button:hover {
+            background: #e8eef5;
+            transform: translateY(-2px);
+        }
+
+        .error {
+            padding: 12px;
+            margin-top: 18px;
+            border-radius: 10px;
+            color: #fecaca;
+            background: #7f1d1d55;
+            line-height: 1.5;
+        }
+
+        .note {
+            margin-top: 24px;
+            color: #94a3b8;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="login-card">
+        <div class="logo">✚</div>
+
+        <h1>OncoSense AI</h1>
+
+        <p class="description">
+            Khám phá ứng dụng trí tuệ nhân tạo trong phân loại
+            dữ liệu ung thư vú bằng mô hình Support Vector Machine.
+        </p>
+
+        <p class="description">
+            Đăng nhập bằng tài khoản Google để tiếp tục.
+        </p>
+
+        {% if oauth_configured %}
+        <a class="google-button" href="/auth/google">
+            <svg width="22" height="22" viewBox="0 0 48 48"
+                 aria-hidden="true">
+                <path fill="#4285F4"
+                      d="M43.6 24.5c0-1.4-.1-2.8-.4-4.1H24v7.8h11a9.4 9.4 0 0 1-4.1 6.2v5.1h6.7c3.9-3.6 6-8.9 6-15z"/>
+                <path fill="#34A853"
+                      d="M24 44c5.5 0 10.1-1.8 13.5-4.8l-6.7-5.1c-1.8 1.2-4 2-6.8 2-5.2 0-9.6-3.5-11.2-8.2H5.9v5.3A20 20 0 0 0 24 44z"/>
+                <path fill="#FBBC05"
+                      d="M12.8 27.9a12 12 0 0 1 0-7.8v-5.3H5.9a20 20 0 0 0 0 18.4z"/>
+                <path fill="#EA4335"
+                      d="M24 12c3 0 5.7 1 7.8 3.1l5.8-5.8C34.1 6 29.5 4 24 4A20 20 0 0 0 5.9 14.8l6.9 5.3C14.4 15.5 18.8 12 24 12z"/>
+            </svg>
+            Đăng nhập bằng Google
+        </a>
+        {% else %}
+        <div class="error">
+            Google OAuth chưa được cấu hình trên máy chủ.
+            Vui lòng kiểm tra biến môi trường trên Render.
+        </div>
+        {% endif %}
+
+        {% if error %}
+        <div class="error">{{ error }}</div>
+        {% endif %}
+
+        <p class="note">
+            Dự án phục vụ mục đích học tập và nghiên cứu.
+            Kết quả không thay thế chẩn đoán của bác sĩ.
+        </p>
+    </main>
+</body>
+</html>
