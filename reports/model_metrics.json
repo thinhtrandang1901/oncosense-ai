@@ -1,0 +1,36 @@
+{
+  "model_name": "OncoSense AI - SVM RBF",
+  "model_version": "1.0.0",
+  "dataset": "Breast Cancer Wisconsin Diagnostic",
+  "total_samples": 569,
+  "number_of_features": 30,
+  "train_samples": 455,
+  "test_samples": 114,
+  "best_params": {
+    "svc__C": 1,
+    "svc__gamma": "scale"
+  },
+  "cv_malignant_recall": 0.9705882352941178,
+  "accuracy": 0.9649122807017544,
+  "sensitivity_malignant": 0.9761904761904762,
+  "specificity_benign": 0.9583333333333334,
+  "precision_malignant": 0.9318181818181818,
+  "f1_malignant": 0.9534883720930233,
+  "roc_auc_malignant": 0.9940476190476191,
+  "confusion_matrix_labels": [
+    "malignant",
+    "benign"
+  ],
+  "confusion_matrix": [
+    [
+      41,
+      1
+    ],
+    [
+      3,
+      69
+    ]
+  ],
+  "sklearn_version": "1.9.1",
+  "warning": "Educational demonstration only. Not a medical diagnosis."
+}
