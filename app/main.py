@@ -60,12 +60,12 @@ TEMPLATE_DIR = ROOT / "app" / "templates"
 STATIC_DIR = ROOT / "app" / "static"
 
 templates = Jinja2Templates(directory=str(TEMPLATE_DIR))
-app.mount(
-    "/static",
-    StaticFiles(directory=str(STATIC_DIR)),
-    name="static",
-)
-
+if STATIC_DIR.exists():
+    app.mount(
+        "/static",
+        StaticFiles(directory=str(STATIC_DIR)),
+        name="static",
+    )
 
 class PredictionRequest(BaseModel):
     features: dict[str, float]
